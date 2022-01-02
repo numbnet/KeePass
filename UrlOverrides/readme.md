@@ -8,7 +8,7 @@
 - SCHEME NAME: `ssh`
 - COMMAND [APPDIR]: 
 ```cmd
-cmd://"{APPDIR}\putty\putty.exe" -ssh {USERNAME}@{URL:RMVSCM} -P {T-REPLACE-RX:/{URL:PORT}/^-1$/22/} -pw "{PASSWORD}"
+cmd://"{APPDIR}\Plugins\putty\putty.exe" -ssh {USERNAME}@{URL:RMVSCM} -P {T-REPLACE-RX:/{URL:PORT}/^-1$/22/} -pw "{PASSWORD}"
 ```
 - COMMAND [DEFULT]: 
 ```cmd
@@ -16,12 +16,36 @@ cmd://"{ENV_PROGRAMFILES_X86}\PuTTY\putty.exe" -ssh "{USERNAME}@{URL:HOST}" -P {
 ```
 
 
-### sFTP
+### SFTP
 --------------------------
 - SCHEME NAME: `sftp`
 - COMMAND [DEFULT]: 
 ```cmd
-cmd://"{APPDIR}\WinSCP\WinSCP.exe" {BASE:SCM}://{USERNAME}:{PASSWORD}@{BASE:HOST}:{T-REPLACE-RX:/{BASE:PORT}/-1//}{BASE:PATH}
+cmd://"{APPDIR}\Plugins\WinSCP\WinSCP.exe" {BASE:SCM}://{USERNAME}:{PASSWORD}@{BASE:HOST}:{T-REPLACE-RX:/{BASE:PORT}/-1//}{BASE:PATH}
+```
+
+
+
+### FTP [FileZilla FTP Client]
+--------------------------
+- SCHEME NAME: `ftp`
+- COMMAND [APPDIR]: 
+```cmd
+cmd://"{APPDIR}\Plugins\FileZilla\filezilla.exe" 'ftp://{USERNAME}:{PASSWORD}@{BASE:RMVSCM}'
+```
+- COMMAND [DEFULT]: 
+```cmd
+cmd://"{ENV_PROGRAMFILES_X86}\FileZilla FTP Client\filezilla.exe" 'ftp://{USERNAME}:{PASSWORD}@{BASE:RMVSCM}'
+```
+
+
+
+### FTP [Windows Explorer]
+--------------------------
+SCHEME NAME: `ftp`
+- COMMAND [DEFULT]: 
+```cmd
+cmd://"explorer.exe" 'ftp://{USERNAME}:{PASSWORD}@{BASE:RMVSCM}'
 ```
 
 
@@ -42,7 +66,7 @@ cmd://cmd /c "cmdkey /generic:TERMSRV/{URL:HOST} /user:{USERNAME} /pass:{PASSWOR
 - SCHEME NAME: `vnc`
 - COMMAND [APPDIR]: 
 ```cmd
-cmd://java -jar "{APPDIR}\vnc\tightvnc-jviewer.jar" -user="{USERNAME}" -password="{PASSWORD}" {BASE:RMVSCM}
+cmd://java -jar "{APPDIR}\Plugins\vnc\tightvnc-jviewer.jar" -user="{USERNAME}" -password="{PASSWORD}" {BASE:RMVSCM}
 ```
 - COMMAND [DEFULT]: 
 ```cmd
@@ -61,29 +85,6 @@ cmd://cmd /c "net use "{BASE:RMVSCM}" /user:"{USERNAME}" "{PASSWORD}" && start \
 ```
 
 
-### FTP [FileZilla FTP Client]
---------------------------
-- SCHEME NAME: `ftp`
-- COMMAND [APPDIR]: 
-```cmd
-cmd://"{APPDIR}\FileZilla\filezilla.exe" 'ftp://{USERNAME}:{PASSWORD}@{BASE:RMVSCM}'
-```
-- COMMAND [DEFULT]: 
-```cmd
-cmd://"{ENV_PROGRAMFILES_X86}\FileZilla FTP Client\filezilla.exe" 'ftp://{USERNAME}:{PASSWORD}@{BASE:RMVSCM}'
-```
-
-
-
-### FTP [Windows Explorer]
---------------------------
-SCHEME NAME: `ftp`
-- COMMAND [DEFULT]: 
-```cmd
-cmd://"explorer.exe" 'ftp://{USERNAME}:{PASSWORD}@{BASE:RMVSCM}'
-```
-
-
 
 ### TeamViewer
 --------------------------
@@ -94,7 +95,7 @@ cmd://"{ENV_PROGRAMFILES_X86}\TeamViewer\TeamViewer.exe" -i "{USERNAME}" --Passw
 ```
 - COMMAND [APPDIR]: 
 ```cmd
-cmd://"{APPDIR}\TeamViewer\TeamViewer.exe" -i "{USERNAME}" --Password "{PASSWORD}"
+cmd://"{APPDIR}\Plugins\TeamViewer\TeamViewer.exe" -i "{USERNAME}" --Password "{PASSWORD}"
 ```
 
 
@@ -105,7 +106,7 @@ cmd://"{APPDIR}\TeamViewer\TeamViewer.exe" -i "{USERNAME}" --Password "{PASSWORD
 SCHEME NAME: `winbox`
 - COMMAND [APPDIR]: 
 ```cmd
-cmd://{APPDIR}\winbox\winbox.exe '{BASE:RMVSCM}' '{USERNAME}' '{PASSWORD}'
+cmd://{APPDIR}\Plugins\winbox\winbox.exe '{BASE:RMVSCM}' '{USERNAME}' '{PASSWORD}'
 ```
 Сохраните winbox.exe в .\Winbox\winbox.exe.
 
@@ -126,7 +127,7 @@ cmd://"{ENV_PROGRAMFILES_X86}\VMware\Infrastructure\Virtual Infrastructure Clien
 - SCHEME NAME: `cisco`
 - COMMAND [APPDIR]: 
 ```cmd
-cmd://{APPDIR}\scriptsdir\Connector_Cisco.vbs "{S:lan}" "{USERNAME}" "{PASSWORD}" "{S:enable}"
+cmd://{APPDIR}\Plugins\scriptsdir\Connector_Cisco.vbs "{S:lan}" "{USERNAME}" "{PASSWORD}" "{S:enable}"
 ```
 > Так же скачиваем сам [Connector_Cisco.vbs](https://raw.githubusercontent.com/numbnet/KeePass/master/UrlOverrides/lib/Connector_Cisco.vbs)
 > И сохраняем его по пути: ``.\cisco\Connector_Cisco.vbs``
