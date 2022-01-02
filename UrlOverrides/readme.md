@@ -16,6 +16,15 @@ cmd://"{ENV_PROGRAMFILES_X86}\PuTTY\putty.exe" -ssh "{USERNAME}@{URL:HOST}" -P {
 ```
 
 
+### sFTP
+--------------------------
+- SCHEME NAME: `sftp`
+- COMMAND [DEFULT]: 
+```cmd
+cmd://"{APPDIR}\WinSCP\WinSCP.exe" {BASE:SCM}://{USERNAME}:{PASSWORD}@{BASE:HOST}:{T-REPLACE-RX:/{BASE:PORT}/-1//}{BASE:PATH}
+```
+
+
 ### RDP MSTSC
 --------------------------
 - SCHEME NAME: `rdp`
